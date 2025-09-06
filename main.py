@@ -5,6 +5,7 @@ import asyncio
 import logging
 from telegram import Update, InlineKeyboardButton, InlineKeyboardMarkup
 from telegram.ext import Application, CommandHandler, CallbackQueryHandler, ContextTypes
+import os
 
 logging.basicConfig(
     format="%(asctime)s - %(name)s - %(levelname)s - %(message)s", level=logging.INFO
@@ -12,7 +13,7 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 nest_asyncio.apply()
-import os
+
 
 BOT_TOKEN = os.environ.get("BOT_TOKEN")
 if not BOT_TOKEN:
@@ -103,4 +104,5 @@ async def main():
     print("🤖 Bot is running... now try /start in Telegram or tap the Start button.")
     await app.run_polling()
 
-await main()
+if __name__ == "__main__":
+  asyncio.run(main())

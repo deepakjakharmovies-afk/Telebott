@@ -12,8 +12,12 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 nest_asyncio.apply()
+import os
 
-BOT_TOKEN = "8102287764:AAHKSHfs-kCs_gbAnwYnH-dyWizPiHVTMpQ"
+BOT_TOKEN = os.environ.get("BOT_TOKEN")
+if not BOT_TOKEN:
+    raise ValueError("Error: BOT_TOKEN environment variable not set")
+
 
 # Placeholder links
 DIRECT_LINK = "You have to buy premium first\ntry shortened link"
